@@ -1,0 +1,8 @@
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\bin\Debug\Csharp_2.exe.config
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\bin\Debug\Csharp_2.exe
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\bin\Debug\Csharp_2.pdb
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\obj\Debug\Csharp_2.csproj.AssemblyReference.cache
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\obj\Debug\Csharp_2.csproj.CoreCompileInputs.cache
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\obj\Debug\Csharp_2.exe
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\obj\Debug\Csharp_2.pdb
+C:\Users\ANagy\source\repos\Csharp_2\Csharp_2\obj\Debug\Csharp_2.exe.config
