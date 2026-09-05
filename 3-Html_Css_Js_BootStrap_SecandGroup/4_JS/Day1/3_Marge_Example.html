@@ -1,0 +1,88 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body{
+            font-family: Arial, Helvetica, sans-serif;
+            font-size: larger;
+        }
+        .outputs
+        {
+            background-color: aquamarine;
+            border: none;
+            border-radius: 10px;
+            font-weight: bold;
+            padding: 10px;
+            margin: 15px;
+        }
+        button
+        {
+            border: none;
+            border-radius: 15px;
+            background-color: blue;
+            color: white;
+            padding: 10px;
+            box-shadow: 2px 3px 5px aquamarine;
+        }
+
+    </style>
+</head>
+<body>
+    <div>
+    <h2>Show Inputs </h2>
+    <label for="userInput">Enter Name : </label>
+    <input type="text" id="userInput">
+    <button onclick="displayinputs()">Show Input</button>
+    <div id="result" class="outputs"></div>
+    <script>
+        function displayinputs()
+        {
+            let name = document.getElementById("userInput").value;
+            if(name.trim()==="")
+            {
+            document.getElementById("result").innerText="pls Enter Your Name "; 
+            }
+            else
+            {    
+            document.getElementById("result").innerText=name; 
+            }
+        }
+    </script>
+
+    </div>
+
+    <div>
+  <label for="score">Enter Score:</label>
+  <input type="number" id="score">
+  <button onclick="CheckScore()" >check Score</button>
+  <script>
+    function CheckScore()
+    {
+        const score = parseInt(document.getElementById("score").value);
+    
+        let result="" ; 
+        if(isNaN(score))
+        {
+            result="Enter Vaild Score";
+        }
+        else if( score >= 90 )
+        {
+            result="Excellent";
+        }
+        else if( score >= 70 )
+        {
+            result="Very Good";
+        }
+        else  
+        {
+            result="keep Trying";
+        }
+        document.getElementById("result").textContent=result ;
+    }
+  </script>
+    </div>
+</body>
+</html>

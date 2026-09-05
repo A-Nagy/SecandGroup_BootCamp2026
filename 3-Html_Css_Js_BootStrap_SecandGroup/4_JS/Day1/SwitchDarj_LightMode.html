@@ -1,0 +1,59 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <style>
+        body
+        {
+            padding: 30px;
+            font-family: Arial, Helvetica, sans-serif;
+        }
+        .darkmode{
+            background-color: black;
+            color: white;
+        }
+        .lightmode{
+            background-color: white;
+            color: black;
+        }
+        button
+        {
+            background-color: rgb(27, 188, 216);
+            border: none;
+            border-radius: 25px;
+            padding: 20px;
+            font-weight: bold;
+            margin: 15px;
+            font-size: 18px;
+            box-shadow: 3px 5px 10px rgb(124, 223, 241);
+        }
+    </style>
+</head>
+<body class="lightmode">
+    <h2>Switching Between Dark And Light Mode</h2>
+
+    <p>this is a simple Text .....</p>
+
+    <h3>What is Dark Mode ?</h3>
+    <p>BackGround Black , White Text</p>
+
+    <h3>What is light Mode ?</h3>
+    <p>White BackGround and Black Text</p>
+    <button onclick="setDarkMode()"> Dark Mode</button>
+    <button onclick="setLightMode()">Light Mode</button>
+<script>
+    function setDarkMode() {
+        document.body.classList.add("darkmode");
+        document.body.classList.remove("lightmode");
+    }
+    function setLightMode()
+    {
+        document.body.classList.add("lightmode");
+        document.body.classList.remove("darkmode");
+    }
+</script>
+    
+</body>
+</html>

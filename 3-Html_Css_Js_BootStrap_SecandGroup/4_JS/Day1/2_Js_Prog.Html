@@ -1,0 +1,87 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<body>
+    <script>
+        /* var , let */
+        /*
+        var salary =parseInt( prompt("Enter Your Salary"))  ; 
+        var annualsalary = salary * 12;
+        document.write("<h1>Annual Salary : ",annualsalary, "</h1>"); 
+
+        if(salary>12000)
+        {
+         document.write("<h1>High Salary</h1>"); 
+        }
+        else if(salary>6000)
+        {
+         document.write("<h1>Normal Salary</h1>"); 
+        }
+        else if(salary>3000)
+        {
+         document.write("<h1>Low Salary</h1>"); 
+        }
+        else 
+        {
+         document.write("<h1>very low Salary</h1>"); 
+        }
+         */
+        
+        /*
+        Enter Day Number And Get Day Type Work Day(1-5) - Week End(6-7)  
+        
+       var day = parseInt(prompt("pls Enter Day Number"));
+       if(day >=1 && day <= 5)
+       {
+        document.write("<h1>Work Day</h1>");
+       }
+       else if(day == 6  || day ==7 )
+       {
+        document.write("<h1>Week End </h1>");
+       }
+       else
+       {
+        document.write("<h1>Invalid Number </h1>");
+       }
+        */
+        /*
+        take 3 Mark From Student and Get Avg , Max and Min
+
+
+        var m1 = parseInt(prompt("Enter First mark"));
+        var m2 = parseInt(prompt("Enter Seconed mark"));
+        var m3 = parseInt(prompt("Enter Thired mark"));
+
+        //  var maxMark = Math.max(m1,m2,m3);
+        //  var minMark = Math.min(m1,m2,m3);
+        //  var avg =Math.round( (m1+m2+m3) /3) ; 
+
+        // document.write("<h2>Avg mark is : ",avg , "</h2>");
+        // document.write("<h2>Max mark is : ",maxMark, "</h2>");
+        //document.write("<h2>Min mark is : ",minMark, "</h210>");
+
+        document.write("<h2>Avg mark is : ", Math.round( (m1+m2+m3) /3)  , "</h2>");
+        document.write("<h2>Max mark is : ", Math.max(m1,m2,m3), "</h2>");
+        document.write("<h2>Min mark is : ", Math.min(m1,m2,m3), "</h210>");
+        */
+       
+        var x =Math.round( Math.random()*10);
+        var y =Math.round( Math.random()*10);
+        var answer = parseInt(prompt(`what's the result of ${x} * ${y} ?`));
+        if( answer == x * y )
+        {
+            document.write("<h1>Correct</h1>");
+        }
+        else
+        {
+            document.write("<h1>Wrong</h1>");
+        }
+
+    </script>
+    
+</body>
+</html>
