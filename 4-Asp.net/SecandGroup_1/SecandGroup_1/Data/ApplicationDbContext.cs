@@ -1,0 +1,16 @@
+﻿using Microsoft.EntityFrameworkCore;
+using SecandGroup_1.Models;
+
+namespace SecandGroup_1.Data
+{
+    public class ApplicationDbContext : DbContext
+    {
+        public ApplicationDbContext(DbContextOptions<ApplicationDbContext> options)
+            : base(options){}
+
+        //DbSet is a collection of entities of a specific type that can be queried from the database
+        //and used to perform CRUD operations.
+        public DbSet<Employee> Employees { get; set; }
+
+    }
+}

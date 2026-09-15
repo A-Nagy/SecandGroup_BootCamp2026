@@ -1,9 +1,10 @@
 ﻿@model List<Employee>
-@{
+
+ @{
     ViewData["Title"] = "Employees Page";
 }
 
-<h1>Employees Screen</h1>
+<h1>@ViewData["Title"] </h1>
 @* 
 <p>Employee ID     :@Model.Id      </p>
 <p>Employee Name   :@Model.Name    </p>
@@ -11,6 +12,13 @@
 <p>Employee Salary :@Model.Salary  </p>
 <p>Employee Phone  :@Model.Phone   </p>
 <p>Employee Address:@Model.Address </p> *@
+
+<br />
+
+<a asp-action="Create" class="btn btn-success">Add New Employee</a>
+
+<br />
+<br />
     
 <table class="table table-bordered">
     <thead>
@@ -33,9 +41,12 @@
                 <td>@employee.Salary</td>
                 <td>@employee.Phone</td>
                 <td>@employee.Address</td>
+                <td>
+                    <a asp-action="Edit"   asp-route-id="@employee.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger">Delete</a>
+                </td>
             </tr>
         }
-  
 </table>
  
  

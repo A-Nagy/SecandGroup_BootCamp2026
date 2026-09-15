@@ -11,8 +11,16 @@
       "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\controllers\\employeescontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
     },
     {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\views\\employees\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\views\\employees\\create.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
       "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
       "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\models\\employee.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\views\\employees\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\views\\employees\\edit.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
     }
   ],
   "DocumentGroupContainers": [
@@ -22,36 +30,62 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": 2,
+          "SelectedChildIndex": 0,
           "Children": [
-            {
-              "$type": "Bookmark",
-              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
-            },
-            {
-              "$type": "Document",
-              "DocumentIndex": 2,
-              "Title": "Employee.cs",
-              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Models\\Employee.cs",
-              "RelativeDocumentMoniker": "SecandGroup_1\\Models\\Employee.cs",
-              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Models\\Employee.cs",
-              "RelativeToolTip": "SecandGroup_1\\Models\\Employee.cs",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAdAAAAAAAAAA==",
-              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-11T17:54:32.979Z",
-              "EditorCaption": ""
-            },
             {
               "$type": "Document",
               "DocumentIndex": 0,
               "Title": "Index.cshtml",
               "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Index.cshtml",
               "RelativeDocumentMoniker": "SecandGroup_1\\Views\\Employees\\Index.cshtml",
-              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Index.cshtml",
-              "RelativeToolTip": "SecandGroup_1\\Views\\Employees\\Index.cshtml",
-              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAGAAAAAAAAAA==",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Index.cshtml*",
+              "RelativeToolTip": "SecandGroup_1\\Views\\Employees\\Index.cshtml*",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADMAAAABAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
-              "WhenOpened": "2026-09-11T17:49:17.132Z",
+              "WhenOpened": "2026-09-12T18:32:55.031Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Bookmark",
+              "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Edit.cshtml",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Edit.cshtml",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Views\\Employees\\Edit.cshtml",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Edit.cshtml",
+              "RelativeToolTip": "SecandGroup_1\\Views\\Employees\\Edit.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAkAAAAsAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-12T18:22:55.743Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "Employee.cs",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Models\\Employee.cs",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Models\\Employee.cs",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Models\\Employee.cs",
+              "RelativeToolTip": "SecandGroup_1\\Models\\Employee.cs",
+              "ViewState": "AgIAAAUAAAAAAAAAAAAAwBMAAABOAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-09-12T17:49:42.402Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Create.cshtml",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Create.cshtml",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Views\\Employees\\Create.cshtml",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Employees\\Create.cshtml",
+              "RelativeToolTip": "SecandGroup_1\\Views\\Employees\\Create.cshtml",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAIwCcAAAAKAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-09-12T17:47:35.446Z",
               "EditorCaption": ""
             },
             {
@@ -62,9 +96,9 @@
               "RelativeDocumentMoniker": "SecandGroup_1\\Controllers\\EmployeesController.cs",
               "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Controllers\\EmployeesController.cs",
               "RelativeToolTip": "SecandGroup_1\\Controllers\\EmployeesController.cs",
-              "ViewState": "AgIAACUAAAAAAAAAAAAiwDMAAAAhAAAAAAAAAA==",
+              "ViewState": "AgIAAF8AAAAAAAAAAAAIwHsAAAApAAAAAAAAAA==",
               "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
-              "WhenOpened": "2026-09-11T17:47:07.257Z",
+              "WhenOpened": "2026-09-12T17:47:39.335Z",
               "EditorCaption": ""
             }
           ]
