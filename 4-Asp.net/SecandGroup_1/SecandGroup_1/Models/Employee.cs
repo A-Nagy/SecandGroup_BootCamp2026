@@ -27,5 +27,11 @@ namespace SecandGroup_1.Models
         public string? Phone { get; set; }
         public string? Address { get; set; }
 
+        public int? DepartmentId { get; set; }
+        //navgition Property
+        public Department? Department { get; set; }
+
+
+
     }
 }

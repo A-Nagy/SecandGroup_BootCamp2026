@@ -29,6 +29,7 @@
             <th>Employee Salary</th>
             <th>Employee Phone</th>
             <th>Employee Address</th>
+            <th>Department</th>
         </tr>
     </thead>
     <tbody>
@@ -41,9 +42,11 @@
                 <td>@employee.Salary</td>
                 <td>@employee.Phone</td>
                 <td>@employee.Address</td>
+                <td>@employee.Department?.Name</td>
                 <td>
-                    <a asp-action="Edit"   asp-route-id="@employee.Id" class="btn btn-warning">Edit</a>
-                    <a asp-action="Delete" asp-route-id="@employee.Id" class="btn btn-danger">Delete</a>
+                    <a asp-action="Details" asp-route-id="@employee.Id" class="btn btn-secondary">Details</a>
+                    <a asp-action="Edit"    asp-route-id="@employee.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete"  asp-route-id="@employee.Id" class="btn btn-danger">Delete</a>
                 </td>
             </tr>
         }

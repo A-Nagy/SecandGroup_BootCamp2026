@@ -1,0 +1,50 @@
+﻿@model Employee
+@{
+    ViewData["Title"] = "Delete Employee Data";
+}
+
+<h1>@ViewData["Title"]</h1>
+<hr />
+<div class="row">
+    <div class="col-md-5">
+        <form asp-action="Delete" method="post">
+            <div asp-validation-summary="ModelOnly" class="text-danger"></div>
+            <input type="hidden" asp-for="Id" />
+            <div class="mb-2">
+                <label for="Name" class="form-label"> Name:</label>
+                <input asp-for="Name" type="text" id="Name" name="Name" class="form-control" disabled/>
+                <span asp-validation-for="Name" class="text-danger"></span>
+
+            </div>
+            <div class="mb-2">
+                <label for="Email" class="form-label">Email:</label>
+                <input asp-for="Email" type="text" id="Email" name="Email" class="form-control" disabled />
+                <span asp-validation-for="Email" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label for="Phone" class="form-label">Phone Number:</label>
+                <input asp-for="Phone" type="tel" id="Phone" name="Phone" class="form-control" disabled />
+                <span asp-validation-for="Phone" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label for="Salary" class="form-label">Salary:</label>
+                <input asp-for="Salary" type="number" id="Salary" name="Salary" class="form-control" disabled />
+                <span asp-validation-for="Salary" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label for="Address" class="form-label">Address:</label>
+                <input asp-for="Address" type="text" id="Address" name="Address" class="form-control" disabled />
+                <span asp-validation-for="Address" class="text-danger"></span>
+            </div>
+            <div class="mb-2">
+                <label for="DepartmentId" class="form-label">Department:</label>
+                <input asp-for="Department.Name"  class="form-control" disabled/>
+                <span asp-validation-for="DepartmentId" class="text-danger"></span>
+            </div>
+            <button type="submit" class="btn btn-danger">Delete</button>
+            <a asp-action="Index" class="btn btn-primary">Go to Employee List</a>
+
+        </form>
+    </div>
+
+</div>

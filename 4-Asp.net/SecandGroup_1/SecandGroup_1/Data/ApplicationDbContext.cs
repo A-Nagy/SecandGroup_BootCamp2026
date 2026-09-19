@@ -11,6 +11,13 @@ namespace SecandGroup_1.Data
         //DbSet is a collection of entities of a specific type that can be queried from the database
         //and used to perform CRUD operations.
         public DbSet<Employee> Employees { get; set; }
+        public DbSet<Category> Categories { get; set; }
+        public DbSet<Department> Department { get; set; } = default!;
+        public DbSet<Product> Products { get; set; }
+
+        public DbSet<User> Users { get; set; }
+        public DbSet<Permission> Permissions { get; set; }
+        public DbSet<Role> Roles { get;set; }
 
     }
 }

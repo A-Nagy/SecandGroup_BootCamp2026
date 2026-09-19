@@ -1,4 +1,6 @@
 ﻿using Microsoft.AspNetCore.Mvc;
+using Microsoft.AspNetCore.Mvc.Rendering;
+using Microsoft.EntityFrameworkCore;
 using SecandGroup_1.Data;
 using SecandGroup_1.Models;
 
@@ -72,13 +74,27 @@ namespace SecandGroup_1.Controllers
             // Retrieve all employees from the database using Entity Framework Core
             //ToList() method is used to execute the query and return the results as a List<Employee> collection.
             // Like Select * from Employees in SQL
-          List<Employee> employees=  _context.Employees.ToList();
+          IEnumerable<Employee> employees=  _context.Employees.Include(e=>e.Department).ToList();
             return View(employees);
+        }
+
+        [HttpGet]
+        public IActionResult Details(int id)
+        {
+ 
+            Employee? emp = _context.Employees.Include(e => e.Department).FirstOrDefault(e=>e.Id==id);
+            if (emp == null)
+            {
+                return NotFound();
+                // Return a 404 Not Found response if the employee is not found
+            }
+            return View(emp);
         }
 
         [HttpGet]
         public IActionResult Create()
         {
+            LoadDepartments();
             return View();
         }
 
@@ -94,7 +110,7 @@ namespace SecandGroup_1.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-         
+            LoadDepartments();
             return View(emp);
         }
 
@@ -110,6 +126,7 @@ namespace SecandGroup_1.Controllers
                 return NotFound();
                 // Return a 404 Not Found response if the employee is not found
             }
+            LoadDepartments();
             return View(emp);
         }
 
@@ -125,8 +142,40 @@ namespace SecandGroup_1.Controllers
                 _context.SaveChanges();
                 return RedirectToAction("Index");
             }
-
+            LoadDepartments();
             return View(emp);
+        }
+
+        [HttpGet]
+        public IActionResult Delete(int id)
+        {
+            // Retrieve the employee from the database based on the provided id
+            Employee? emp = _context.Employees.Include(e => e.Department).FirstOrDefault(e => e.Id == id);
+            if (emp == null)
+            {
+                return NotFound();
+                // Return a 404 Not Found response if the employee is not found
+            }
+            return View(emp);
+        }
+
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        //This attribute is used to protect against Cross-Site Request Forgery (CSRF) attacks.
+        public IActionResult Delete(Employee emp)
+        {
+           
+                _context.Employees.Remove(emp);
+                _context.SaveChanges();
+                return RedirectToAction("Index");
+          
+          
+        }
+        private void LoadDepartments() 
+        {
+            IEnumerable<Department> departments = _context.Department.ToList();
+            ViewBag.Departments = new SelectList(departments, "Id", "Name");
         }
     }
 }
