@@ -1,4 +1,5 @@
-﻿@model List<Employee>
+﻿
+@model List<Employee>
 
  @{
     ViewData["Title"] = "Employees Page";
@@ -14,9 +15,9 @@
 <p>Employee Address:@Model.Address </p> *@
 
 <br />
-
+@if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.EmployeeCreate)) { 
 <a asp-action="Create" class="btn btn-success">Add New Employee</a>
-
+}
 <br />
 <br />
     
@@ -44,9 +45,20 @@
                 <td>@employee.Address</td>
                 <td>@employee.Department?.Name</td>
                 <td>
-                    <a asp-action="Details" asp-route-id="@employee.Id" class="btn btn-secondary">Details</a>
-                    <a asp-action="Edit"    asp-route-id="@employee.Id" class="btn btn-warning">Edit</a>
-                    <a asp-action="Delete"  asp-route-id="@employee.Id" class="btn btn-danger">Delete</a>
+                    @if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.EmployeeDetails))
+                    {
+                        <a asp-action="Details" asp-route-id="@employee.Id" class="btn btn-secondary">Details</a>
+
+ }
+                    @if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.EmployeeEdit))
+                    {                    
+                        <a asp-action="Edit"    asp-route-id="@employee.Id" class="btn btn-warning">Edit</a>
+
+ }
+                    @if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.EmployeeDelete)) 
+                    {   
+                        <a asp-action="Delete"  asp-route-id="@employee.Id" class="btn btn-danger">Delete</a>
+ }
                 </td>
             </tr>
         }

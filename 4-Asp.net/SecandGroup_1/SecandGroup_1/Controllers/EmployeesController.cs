@@ -1,11 +1,14 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SecandGroup_1.Data;
 using SecandGroup_1.Models;
+using SecandGroup_1.Security;
 
 namespace SecandGroup_1.Controllers
 {
+    [Authorize]
     public class EmployeesController : Controller
     {
         #region StartCode
@@ -69,6 +72,8 @@ namespace SecandGroup_1.Controllers
 
         //New Version Handing from Databse Between Controller   and View
         [HttpGet]
+        [Authorize(Policy = PermissionsNames.EmployeeView)]
+
         public IActionResult Index()
         {
             // Retrieve all employees from the database using Entity Framework Core
@@ -79,6 +84,8 @@ namespace SecandGroup_1.Controllers
         }
 
         [HttpGet]
+        [Authorize(Policy = PermissionsNames.EmployeeDetails)]
+
         public IActionResult Details(int id)
         {
  
@@ -90,7 +97,7 @@ namespace SecandGroup_1.Controllers
             }
             return View(emp);
         }
-
+        [Authorize(Policy =PermissionsNames.EmployeeCreate)]
         [HttpGet]
         public IActionResult Create()
         {
@@ -98,6 +105,7 @@ namespace SecandGroup_1.Controllers
             return View();
         }
 
+        [Authorize(Policy = PermissionsNames.EmployeeCreate)]
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -115,6 +123,7 @@ namespace SecandGroup_1.Controllers
         }
 
 
+        [Authorize(Policy = PermissionsNames.EmployeeEdit)]
 
         [HttpGet]
         public IActionResult Edit(int id)
@@ -130,6 +139,7 @@ namespace SecandGroup_1.Controllers
             return View(emp);
         }
 
+        [Authorize(Policy = PermissionsNames.EmployeeEdit)]
 
         [HttpPost]
         [ValidateAntiForgeryToken]
@@ -146,6 +156,8 @@ namespace SecandGroup_1.Controllers
             return View(emp);
         }
 
+        [Authorize(Policy = PermissionsNames.EmployeeDelete)]
+
         [HttpGet]
         public IActionResult Delete(int id)
         {
@@ -159,6 +171,7 @@ namespace SecandGroup_1.Controllers
             return View(emp);
         }
 
+        [Authorize(Policy = PermissionsNames.EmployeeDelete)]
 
         [HttpPost]
         [ValidateAntiForgeryToken]

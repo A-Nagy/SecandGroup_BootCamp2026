@@ -154,5 +154,42 @@ namespace SecandGroup_1.Controllers
             return _context.Users.Any(e => e.Id == id);
         }
         //Assign Roles for User
+
+        [HttpGet]
+        public IActionResult AssignRole(int Id)
+        {
+            User? user = _context.Users.Include(u => u.Roles).FirstOrDefault(r => r.Id == Id);
+
+            List<Role> roles = _context.Roles.ToList();
+
+            ViewBag.AllRoles = roles;
+
+            ViewBag.UserRole = user.Roles.Select(p => p.Id).ToList();
+
+            return View(user);
+        }
+
+        [HttpPost]
+        public IActionResult AssignRole(int Id, List<int> RoleIds)
+        {
+            User? user = _context.Users.Include(r => r.Roles).FirstOrDefault(r => r.Id == Id);
+            if (user == null)
+            {
+                return NotFound();
+            }
+            user.Roles.Clear();
+
+            IEnumerable<Role> selectedRoles = _context.Roles.Where(p => RoleIds.Contains(p.Id));
+
+            foreach (Role role in selectedRoles)
+            {
+                user.Roles.Add(role);
+
+            }
+            _context.SaveChanges();
+
+
+            return RedirectToAction("Index");
+        }
     }
 }

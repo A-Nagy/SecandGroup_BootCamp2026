@@ -1,0 +1,59 @@
+﻿
+@{
+    ViewData["Title"] = "Doashboard";
+}
+<h1>Welcome , @User.Identity?.Name</h1>
+<hr/>
+<p class="text-muted">
+Select One Of Avaliable sections.  
+</p>
+<div class="row">
+    @if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.DepartmentView))
+    {
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Departments</h5>
+                    <p class="card-text">Manage Departments</p>
+                    <a href="@Url.Action("Index", "Departments")" class="btn btn-primary">Go to Departments</a>
+                </div>
+            </div>
+        </div>
+    }
+    @if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.EmployeeView))
+    {
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title">Employees</h5>
+                    <p class="card-text">Manage Employees</p>
+                    <a href="@Url.Action("Index", "Employees")" class="btn btn-primary">Go to Employees</a>
+                </div>
+            </div>
+        </div>
+    }
+
+    @if (User.IsInRole("Admin"))
+    {
+        <div class="col-md-3">
+            <div class="card text-center">
+                <div class="card-body">
+                    <h5 class="card-title"> Adminstration Settings</h5>
+                <p class="card-text">Manage Settings</p>
+                <a href="@Url.Action("Index", "Departments")" class="btn btn-primary">Go to Settings</a>
+                </div>
+            </div>
+        </div>
+    }
+
+    <div class="col-md-3">
+        <div class="card text-center">
+            <div class="card-body">
+                <h5 class="card-title"> My Access</h5>
+                <p class="card-text">My Access</p>
+                <a href="@Url.Action("myAccess", "Account")" class="btn btn-primary">Go to MyAccess</a>
+            </div>
+        </div>
+    </div>
+</div>
+

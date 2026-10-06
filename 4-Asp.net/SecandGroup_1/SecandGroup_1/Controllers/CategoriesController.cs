@@ -1,9 +1,11 @@
-﻿using Microsoft.AspNetCore.Mvc;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Mvc;
 using SecandGroup_1.Data;
 using SecandGroup_1.Models;
 
 namespace SecandGroup_1.Controllers
 {
+    [Authorize]
     public class CategoriesController : Controller
     {
         //Dependency Injection (DI)  the ApplicationDbContext into the EmployeesController

@@ -1,7 +1,28 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\controllers\\accountcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\views\\dashboard\\index.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\views\\account\\myaccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\views\\account\\myaccess.cshtml||{40D31677-CBC0-4297-A9EF-89D907823A98}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|h:\\bootcamp\\2-secandgroup_bootcamp2026\\4-asp.net\\secandgroup_1\\secandgroup_1\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{CBC60413-5E54-4459-A1D1-B958AF181B55}|SecandGroup_1\\SecandGroup_1.csproj|solutionrelative:secandgroup_1\\controllers\\dashboardcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 0,
@@ -9,11 +30,76 @@
       "DocumentGroups": [
         {
           "DockedWidth": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 3,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:0:0:{1c4feeaa-4718-4aa9-859d-94ce25d182ba}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "Program.cs",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Program.cs",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Program.cs",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Program.cs",
+              "RelativeToolTip": "SecandGroup_1\\Program.cs",
+              "ViewState": "AgIAADgAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-03T18:22:08.829Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MyAccess.cshtml",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Account\\MyAccess.cshtml",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Views\\Account\\MyAccess.cshtml",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\Account\\MyAccess.cshtml",
+              "RelativeToolTip": "SecandGroup_1\\Views\\Account\\MyAccess.cshtml",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAABwAAAAWAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-03T18:09:46.247Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "AccountController.cs",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Controllers\\AccountController.cs",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Controllers\\AccountController.cs",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Controllers\\AccountController.cs",
+              "RelativeToolTip": "SecandGroup_1\\Controllers\\AccountController.cs",
+              "ViewState": "AgIAAFwAAAAAAAAAAAAgwGwAAAAuAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-03T18:09:28.319Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Index.cshtml",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\DashBoard\\Index.cshtml",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Views\\DashBoard\\Index.cshtml",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Views\\DashBoard\\Index.cshtml",
+              "RelativeToolTip": "SecandGroup_1\\Views\\DashBoard\\Index.cshtml",
+              "ViewState": "AgIAABsAAAAAAAAAAAAAADAAAAAaAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000759|",
+              "WhenOpened": "2026-10-03T17:58:52.201Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "DashBoardController.cs",
+              "DocumentMoniker": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Controllers\\DashBoardController.cs",
+              "RelativeDocumentMoniker": "SecandGroup_1\\Controllers\\DashBoardController.cs",
+              "ToolTip": "H:\\Bootcamp\\2-SecandGroup_BootCamp2026\\4-Asp.net\\SecandGroup_1\\SecandGroup_1\\Controllers\\DashBoardController.cs",
+              "RelativeToolTip": "SecandGroup_1\\Controllers\\DashBoardController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAYAAAARAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-10-03T17:58:14.471Z",
+              "EditorCaption": ""
             }
           ]
         }

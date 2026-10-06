@@ -1,5 +1,7 @@
+using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using SecandGroup_1.Data;
+using SecandGroup_1.Security;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -14,6 +16,30 @@ builder.Services.AddControllersWithViews();
 // configure it to use SQL Server with the connection string from appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddAuthentication(
+    CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>
+    {
+        options.LoginPath         = "/Account/Login";
+        options.AccessDeniedPath  = "/Account/AccessDenied";
+        options.ExpireTimeSpan    =  TimeSpan.FromMinutes(30);
+        options.SlidingExpiration =  true;
+        options.Cookie.HttpOnly   =  true;
+        options.Cookie.Name       =  "CompanyMengment.Auth";
+    });
+
+builder.Services.AddAuthorization(options =>
+{   // Addpolicies for All permissions
+    foreach (string  permission in PermissionsNames.All)
+    {
+        options.AddPolicy(permission, policy =>
+        {
+            policy.RequireClaim(PermissionsNames.ClaimType, permission);
+        });
+    }
+
+
+});
 
 var app = builder.Build();
 
@@ -30,10 +56,12 @@ app.UseStaticFiles();
 
 app.UseRouting();
 
+app.UseAuthentication();
+
 app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Account}/{action=Login}/{id?}");
 
 app.Run();

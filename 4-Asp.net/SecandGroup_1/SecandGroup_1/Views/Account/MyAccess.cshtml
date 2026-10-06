@@ -1,0 +1,32 @@
+﻿@using System.Security.Claims
+
+@{
+    ViewData["Title"] = "MyAccess";
+    var role = User.Claims.Where(c => c.Type == ClaimTypes.Role)
+               .Select(c => c.Value).Distinct().ToList();
+
+    var permission = User.Claims.Where(c => c.Type == PermissionsNames.ClaimType)
+                 .Select(c => c.Value).Distinct().ToList();
+
+}
+
+<h1>@User.Identity?.Name 's Access</h1>
+<hr />
+<h1>Roles : </h1>
+<ul>
+    @foreach (var r in role)
+    {
+        <li>@r</li>
+}
+ <ul>
+
+ <hr />
+
+<h1>Permissions : </h1>
+        <ul>
+@foreach (var p in permission)
+{
+                <li>@p</li>
+}
+            <ul>
+
