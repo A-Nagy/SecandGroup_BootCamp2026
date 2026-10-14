@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
 using SecandGroup_1.Data;
+using SecandGroup_1.Repositories.Implementaion;
+using SecandGroup_1.Repositories.Interfaces;
 using SecandGroup_1.Security;
 
 var builder = WebApplication.CreateBuilder(args);
@@ -16,6 +18,9 @@ builder.Services.AddControllersWithViews();
 // configure it to use SQL Server with the connection string from appsettings.json
 builder.Services.AddDbContext<ApplicationDbContext>(options =>
     options.UseSqlServer(builder.Configuration.GetConnectionString("DefaultConnection")));
+
+builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
+builder.Services.AddScoped(typeof(IEmployeeRepository),typeof(EmployeeRepository));
 
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>

@@ -3,7 +3,9 @@ using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SecandGroup_1.Data;
+using SecandGroup_1.Dtos;
 using SecandGroup_1.Models;
+using SecandGroup_1.Repositories.Interfaces;
 using SecandGroup_1.Security;
 
 namespace SecandGroup_1.Controllers
@@ -64,10 +66,19 @@ namespace SecandGroup_1.Controllers
 
         //Dependency Injection (DI)  the ApplicationDbContext into the EmployeesController
 
-        private readonly ApplicationDbContext _context;
-        public EmployeesController(ApplicationDbContext context)
+        //private readonly ApplicationDbContext _context;
+        //private readonly IRepository<Employee> _employeeRepository;
+        private readonly IRepository<Department> _deptRepository;
+        private readonly IEmployeeRepository _employee;
+    
+
+     
+        public EmployeesController(ApplicationDbContext context, IRepository<Employee> employeeRepository, IEmployeeRepository employee, IRepository<Department> deptRepository)
         {
-            _context = context;
+            //_context = context;
+            //_employeeRepository = employeeRepository;
+            _deptRepository = deptRepository;
+            _employee = employee;
         }
 
         //New Version Handing from Databse Between Controller   and View
@@ -79,17 +90,30 @@ namespace SecandGroup_1.Controllers
             // Retrieve all employees from the database using Entity Framework Core
             //ToList() method is used to execute the query and return the results as a List<Employee> collection.
             // Like Select * from Employees in SQL
-          IEnumerable<Employee> employees=  _context.Employees.Include(e=>e.Department).ToList();
+          IEnumerable<Employee> employees = _employee.GetAll();
+                /*_context.Employees.Include(e=>e.Department).ToList();*/
             return View(employees);
         }
+        public IActionResult GetAllEmployee()
+        {
+            IEnumerable<EmployeeDtos> employees = _employee.GetEmployeesWithDepartmentNames();
+                //_context.Employees.Select(e=> new EmployeeDtos 
+                //                        {
+                //                            Id = e.Id,
+                //                            Name = e.Name,
+                //                            Email = e.Email,
+                //                            DepartmentName = e.Department != null ? e.Department.Name:null })
+                //                        .ToList();
+            return Ok(employees);
+        } 
 
         [HttpGet]
         [Authorize(Policy = PermissionsNames.EmployeeDetails)]
 
         public IActionResult Details(int id)
         {
- 
-            Employee? emp = _context.Employees.Include(e => e.Department).FirstOrDefault(e=>e.Id==id);
+ //_context.Employees.Include(e => e.Department).FirstOrDefault(e=>e.Id==id);
+            Employee? emp = _employee.GetEmployeeWithDepartment(id);
             if (emp == null)
             {
                 return NotFound();
@@ -114,8 +138,9 @@ namespace SecandGroup_1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Employees.Add(emp);
-                _context.SaveChanges();
+                _employee.Add(emp);
+                //_context.Employees.Add(emp);
+                //_context.SaveChanges();
                 return RedirectToAction("Index");
             }
             LoadDepartments();
@@ -129,7 +154,7 @@ namespace SecandGroup_1.Controllers
         public IActionResult Edit(int id)
         {
             // Retrieve the employee from the database based on the provided id
-            Employee? emp = _context.Employees.Find(id);
+            Employee? emp = /*_context.Employees.Find(id);*/_employee.GetById(id);  
             if (emp == null) 
             {
                 return NotFound();
@@ -148,8 +173,9 @@ namespace SecandGroup_1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Employees.Update(emp);
-                _context.SaveChanges();
+                _employee.Update(emp);
+                //_context.Employees.Update(emp);
+                //_context.SaveChanges();
                 return RedirectToAction("Index");
             }
             LoadDepartments();
@@ -162,7 +188,7 @@ namespace SecandGroup_1.Controllers
         public IActionResult Delete(int id)
         {
             // Retrieve the employee from the database based on the provided id
-            Employee? emp = _context.Employees.Include(e => e.Department).FirstOrDefault(e => e.Id == id);
+            Employee? emp = _employee.GetEmployeeWithDepartment(id);
             if (emp == null)
             {
                 return NotFound();
@@ -178,16 +204,16 @@ namespace SecandGroup_1.Controllers
         //This attribute is used to protect against Cross-Site Request Forgery (CSRF) attacks.
         public IActionResult Delete(Employee emp)
         {
-           
-                _context.Employees.Remove(emp);
-                _context.SaveChanges();
+            _employee.Delete(emp);
+                //_context.Employees.Remove(emp);
+                //_context.SaveChanges();
                 return RedirectToAction("Index");
           
           
         }
         private void LoadDepartments() 
         {
-            IEnumerable<Department> departments = _context.Department.ToList();
+            IEnumerable<Department> departments = /*_context.Department.ToList();*/_deptRepository.GetAll();
             ViewBag.Departments = new SelectList(departments, "Id", "Name");
         }
     }

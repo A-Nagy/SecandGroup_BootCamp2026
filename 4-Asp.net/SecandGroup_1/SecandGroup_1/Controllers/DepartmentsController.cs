@@ -8,23 +8,28 @@ using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
 using SecandGroup_1.Data;
 using SecandGroup_1.Models;
+using SecandGroup_1.Repositories.Interfaces;
 
 namespace SecandGroup_1.Controllers
 {
     [Authorize]
     public class DepartmentsController : Controller
     {
-        private readonly ApplicationDbContext _context;
+        //private readonly ApplicationDbContext _context;
+      //  private readonly IDepartmentRepository _departmentsRepository;
+          private readonly IRepository<Department> _departmentsRepository;
 
-        public DepartmentsController(ApplicationDbContext context)
+        public DepartmentsController(ApplicationDbContext context, IRepository<Department> repo)
         {
-            _context = context;
+            //_context = context;
+            _departmentsRepository = repo;
         }
 
         // GET: Departments
         public async Task<IActionResult> Index()
         {
-            return View(await _context.Department.ToListAsync());
+            /*await _context.Department.ToListAsync()*/
+            return View(_departmentsRepository.GetAll());
         }
 
         // GET: Departments/Details/5
@@ -34,9 +39,8 @@ namespace SecandGroup_1.Controllers
             {
                 return NotFound();
             }
-
-            var department = await _context.Department
-                .FirstOrDefaultAsync(m => m.Id == id);
+/*await _context.Department.FirstOrDefaultAsync(m => m.Id == id)*/
+            var department = _departmentsRepository.GetById(id.Value);
             if (department == null)
             {
                 return NotFound();
@@ -60,8 +64,9 @@ namespace SecandGroup_1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _context.Add(department);
-                await _context.SaveChangesAsync();
+                _departmentsRepository.Add(department);
+                //_context.Add(department);
+                //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
             }
             return View(department);
@@ -74,8 +79,8 @@ namespace SecandGroup_1.Controllers
             {
                 return NotFound();
             }
-
-            var department = await _context.Department.FindAsync(id);
+            //await _context.Department.FindAsync(id);
+            var department = _departmentsRepository.GetById(id.Value);
             if (department == null)
             {
                 return NotFound();
@@ -99,19 +104,13 @@ namespace SecandGroup_1.Controllers
             {
                 try
                 {
-                    _context.Update(department);
-                    await _context.SaveChangesAsync();
+                    _departmentsRepository.Update(department);
+                    //_context.Update(department);
+                    //await _context.SaveChangesAsync();
                 }
                 catch (DbUpdateConcurrencyException)
                 {
-                    if (!DepartmentExists(department.Id))
-                    {
-                        return NotFound();
-                    }
-                    else
-                    {
-                        throw;
-                    }
+                    ;
                 }
                 return RedirectToAction(nameof(Index));
             }
@@ -125,9 +124,8 @@ namespace SecandGroup_1.Controllers
             {
                 return NotFound();
             }
-
-            var department = await _context.Department
-                .FirstOrDefaultAsync(m => m.Id == id);
+            /*await _context.Department.FirstOrDefaultAsync(m => m.Id == id);*/
+            var department = _departmentsRepository.GetById(id.Value);
             if (department == null)
             {
                 return NotFound();
@@ -141,19 +139,17 @@ namespace SecandGroup_1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var department = await _context.Department.FindAsync(id);
+            var department = _departmentsRepository.GetById(id);
             if (department != null)
             {
-                _context.Department.Remove(department);
+                _departmentsRepository.Delete(department);
+                //_context.Department.Remove(department);
             }
 
-            await _context.SaveChangesAsync();
+            //await _context.SaveChangesAsync();
             return RedirectToAction(nameof(Index));
         }
 
-        private bool DepartmentExists(int id)
-        {
-            return _context.Department.Any(e => e.Id == id);
-        }
+       
     }
 }
