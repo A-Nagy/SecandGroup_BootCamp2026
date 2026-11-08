@@ -1,5 +1,5 @@
 ﻿
-@model List<Employee>
+@model IEnumerable<EmployeeDtos>
 
  @{
     ViewData["Title"] = "Employees Page";
@@ -27,9 +27,9 @@
             <th>Employee ID</th>
             <th>Employee Name</th>
             <th>Employee Email</th>
-            <th>Employee Salary</th>
+      @*       <th>Employee Salary</th>
             <th>Employee Phone</th>
-            <th>Employee Address</th>
+            <th>Employee Address</th> *@
             <th>Department</th>
         </tr>
     </thead>
@@ -40,10 +40,10 @@
                 <td>@employee.Id</td>
                 <td>@employee.Name</td>
                 <td>@employee.Email</td>
-                <td>@employee.Salary</td>
+              @*   <td>@employee.Salary</td>
                 <td>@employee.Phone</td>
-                <td>@employee.Address</td>
-                <td>@employee.Department?.Name</td>
+                <td>@employee.Address</td> *@
+                <td>@employee.DepartmentName</td>
                 <td>
                     @if (User.HasClaim(PermissionsNames.ClaimType, PermissionsNames.EmployeeDetails))
                     {

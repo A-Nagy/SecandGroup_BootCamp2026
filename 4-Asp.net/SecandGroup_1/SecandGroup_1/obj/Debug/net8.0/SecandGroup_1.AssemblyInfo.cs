@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("SecandGroup_1")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+f9dc86327b469d9d2998ddda7c056349db3cc886")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0.0+0a050fca9135a5970ae677d309914b2fa98a390d")]
 [assembly: System.Reflection.AssemblyProductAttribute("SecandGroup_1")]
 [assembly: System.Reflection.AssemblyTitleAttribute("SecandGroup_1")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

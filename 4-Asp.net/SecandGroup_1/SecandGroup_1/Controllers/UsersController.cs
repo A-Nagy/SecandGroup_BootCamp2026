@@ -5,8 +5,9 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SecandGroup_1.Data;
-using SecandGroup_1.Models;
+using SecandGroup_1.Domain.Entities;
+using SecandGroup_1.Infrastructure.Data;
+
 
 namespace SecandGroup_1.Controllers
 {

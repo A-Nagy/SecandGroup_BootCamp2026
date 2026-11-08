@@ -1,7 +1,8 @@
 ﻿using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using SecandGroup_1.Data;
-using SecandGroup_1.Models;
+using SecandGroup_1.Domain.Entities;
+using SecandGroup_1.Infrastructure.Data;
+
 
 namespace SecandGroup_1.Controllers
 {

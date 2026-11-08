@@ -2,11 +2,13 @@
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SecandGroup_1.Data;
-using SecandGroup_1.Dtos;
-using SecandGroup_1.Models;
-using SecandGroup_1.Repositories.Interfaces;
-using SecandGroup_1.Security;
+using SecandGroup_1.Application.Abstractions.Repositories;
+using SecandGroup_1.Application.Abstractions.Services;
+using SecandGroup_1.Application.Dtos;
+using SecandGroup_1.Application.Security;
+using SecandGroup_1.Domain.Entities;
+using SecandGroup_1.Infrastructure.Data;
+
 
 namespace SecandGroup_1.Controllers
 {
@@ -68,17 +70,21 @@ namespace SecandGroup_1.Controllers
 
         //private readonly ApplicationDbContext _context;
         //private readonly IRepository<Employee> _employeeRepository;
-        private readonly IRepository<Department> _deptRepository;
-        private readonly IEmployeeRepository _employee;
-    
+        //private readonly IRepository<Department> _deptRepository;
+        //private readonly IEmployeeRepository _employee;
+        //private readonly IUnitOfWork _unitOfWork;
+        private readonly IEmployeeService _service;
 
-     
-        public EmployeesController(ApplicationDbContext context, IRepository<Employee> employeeRepository, IEmployeeRepository employee, IRepository<Department> deptRepository)
+
+
+        public EmployeesController(ApplicationDbContext context, IRepository<Employee> employeeRepository, IEmployeeRepository employee, IRepository<Department> deptRepository, IUnitOfWork unitOfWork, IEmployeeService service)
         {
             //_context = context;
             //_employeeRepository = employeeRepository;
-            _deptRepository = deptRepository;
-            _employee = employee;
+            //_deptRepository = deptRepository;
+            //_employee = employee;
+            //_unitOfWork = unitOfWork;
+            _service = service;
         }
 
         //New Version Handing from Databse Between Controller   and View
@@ -90,22 +96,22 @@ namespace SecandGroup_1.Controllers
             // Retrieve all employees from the database using Entity Framework Core
             //ToList() method is used to execute the query and return the results as a List<Employee> collection.
             // Like Select * from Employees in SQL
-          IEnumerable<Employee> employees = _employee.GetAll();
+          IEnumerable<EmployeeDtos> employees = _service.GetAllEmployeesUsingDto();
                 /*_context.Employees.Include(e=>e.Department).ToList();*/
             return View(employees);
         }
-        public IActionResult GetAllEmployee()
-        {
-            IEnumerable<EmployeeDtos> employees = _employee.GetEmployeesWithDepartmentNames();
-                //_context.Employees.Select(e=> new EmployeeDtos 
-                //                        {
-                //                            Id = e.Id,
-                //                            Name = e.Name,
-                //                            Email = e.Email,
-                //                            DepartmentName = e.Department != null ? e.Department.Name:null })
-                //                        .ToList();
-            return Ok(employees);
-        } 
+        //public IActionResult GetAllEmployee()
+        //{
+        //    IEnumerable<EmployeeDtos> employees = _unitOfWork.Employees.GetEmployeesWithDepartmentNames();
+        //        //_context.Employees.Select(e=> new EmployeeDtos 
+        //        //                        {
+        //        //                            Id = e.Id,
+        //        //                            Name = e.Name,
+        //        //                            Email = e.Email,
+        //        //                            DepartmentName = e.Department != null ? e.Department.Name:null })
+        //        //                        .ToList();
+        //    return Ok(employees);
+        //} 
 
         [HttpGet]
         [Authorize(Policy = PermissionsNames.EmployeeDetails)]
@@ -113,7 +119,7 @@ namespace SecandGroup_1.Controllers
         public IActionResult Details(int id)
         {
  //_context.Employees.Include(e => e.Department).FirstOrDefault(e=>e.Id==id);
-            Employee? emp = _employee.GetEmployeeWithDepartment(id);
+             var emp = _service.GetEmployeeByIdUseingDto(id);
             if (emp == null)
             {
                 return NotFound();
@@ -134,13 +140,16 @@ namespace SecandGroup_1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //This attribute is used to protect against Cross-Site Request Forgery (CSRF) attacks.
-        public IActionResult Create(Employee emp)
+        public IActionResult Create(CreateEmployeeDto emp)
         {
             if (ModelState.IsValid)
             {
-                _employee.Add(emp);
-                //_context.Employees.Add(emp);
-                //_context.SaveChanges();
+                _service.AddEmployee(emp);
+                _service.SaveEmployee();
+            //    _unitOfWork.Employees.Add(emp);
+            //    _unitOfWork.Save();
+            //_context.Employees.Add(emp);
+            //_context.SaveChanges();
                 return RedirectToAction("Index");
             }
             LoadDepartments();
@@ -154,7 +163,7 @@ namespace SecandGroup_1.Controllers
         public IActionResult Edit(int id)
         {
             // Retrieve the employee from the database based on the provided id
-            Employee? emp = /*_context.Employees.Find(id);*/_employee.GetById(id);  
+            var emp = /*_context.Employees.Find(id); _unitOfWork.Employees.GetById(id); */  _service.GetEmployeeByIdUseingDto(id);
             if (emp == null) 
             {
                 return NotFound();
@@ -169,11 +178,14 @@ namespace SecandGroup_1.Controllers
         [HttpPost]
         [ValidateAntiForgeryToken]
         //This attribute is used to protect against Cross-Site Request Forgery (CSRF) attacks.
-        public IActionResult Edit(Employee emp)
+        public IActionResult Edit(UpdateEmployeeDto emp)
         {
             if (ModelState.IsValid)
             {
-                _employee.Update(emp);
+                _service.UpdateEmployee(emp);
+                _service.SaveEmployee();
+                //_unitOfWork.Employees.Update(emp);
+                //_unitOfWork.Save();
                 //_context.Employees.Update(emp);
                 //_context.SaveChanges();
                 return RedirectToAction("Index");
@@ -188,7 +200,7 @@ namespace SecandGroup_1.Controllers
         public IActionResult Delete(int id)
         {
             // Retrieve the employee from the database based on the provided id
-            Employee? emp = _employee.GetEmployeeWithDepartment(id);
+            var emp = _service.GetEmployeeByIdUseingDto(id);
             if (emp == null)
             {
                 return NotFound();
@@ -204,16 +216,20 @@ namespace SecandGroup_1.Controllers
         //This attribute is used to protect against Cross-Site Request Forgery (CSRF) attacks.
         public IActionResult Delete(Employee emp)
         {
-            _employee.Delete(emp);
-                //_context.Employees.Remove(emp);
-                //_context.SaveChanges();
+            _service.DeleteEmployee(emp.Id);
+            _service.SaveEmployee();
+            ////_unitOfWork.Employees.Delete(emp);
+            ////_unitOfWork.Save();
+            //_context.Employees.Remove(emp);
+            //_context.SaveChanges();
                 return RedirectToAction("Index");
           
           
         }
         private void LoadDepartments() 
         {
-            IEnumerable<Department> departments = /*_context.Department.ToList();*/_deptRepository.GetAll();
+           /* IEnumerable<Department>*/ var departments = _service.GetAllDepartmentsUsingDto();
+                /*_context.Department.ToList();_unitOfWork.Departments.GetAll();*/
             ViewBag.Departments = new SelectList(departments, "Id", "Name");
         }
     }

@@ -6,9 +6,9 @@ using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
 using Microsoft.AspNetCore.Mvc.Rendering;
 using Microsoft.EntityFrameworkCore;
-using SecandGroup_1.Data;
-using SecandGroup_1.Models;
-using SecandGroup_1.Repositories.Interfaces;
+using SecandGroup_1.Application.Abstractions.Repositories;
+using SecandGroup_1.Domain.Entities;
+using SecandGroup_1.Infrastructure.Data;
 
 namespace SecandGroup_1.Controllers
 {
@@ -17,19 +17,21 @@ namespace SecandGroup_1.Controllers
     {
         //private readonly ApplicationDbContext _context;
       //  private readonly IDepartmentRepository _departmentsRepository;
-          private readonly IRepository<Department> _departmentsRepository;
+          //private readonly IRepository<Department> _departmentsRepository;
+          private readonly IUnitOfWork _unitOfWork;
 
-        public DepartmentsController(ApplicationDbContext context, IRepository<Department> repo)
+        public DepartmentsController(ApplicationDbContext context, IRepository<Department> repo, IUnitOfWork unitOfWork)
         {
             //_context = context;
-            _departmentsRepository = repo;
+            //_departmentsRepository = repo;
+            _unitOfWork = unitOfWork;
         }
 
         // GET: Departments
         public async Task<IActionResult> Index()
         {
             /*await _context.Department.ToListAsync()*/
-            return View(_departmentsRepository.GetAll());
+            return View(_unitOfWork.Departments.GetAll());
         }
 
         // GET: Departments/Details/5
@@ -40,7 +42,7 @@ namespace SecandGroup_1.Controllers
                 return NotFound();
             }
 /*await _context.Department.FirstOrDefaultAsync(m => m.Id == id)*/
-            var department = _departmentsRepository.GetById(id.Value);
+            var department = _unitOfWork.Departments.GetById(id.Value);
             if (department == null)
             {
                 return NotFound();
@@ -64,7 +66,8 @@ namespace SecandGroup_1.Controllers
         {
             if (ModelState.IsValid)
             {
-                _departmentsRepository.Add(department);
+                _unitOfWork.Departments.Add(department);
+                _unitOfWork.Save();
                 //_context.Add(department);
                 //await _context.SaveChangesAsync();
                 return RedirectToAction(nameof(Index));
@@ -80,7 +83,7 @@ namespace SecandGroup_1.Controllers
                 return NotFound();
             }
             //await _context.Department.FindAsync(id);
-            var department = _departmentsRepository.GetById(id.Value);
+            var department = _unitOfWork.Departments.GetById(id.Value);
             if (department == null)
             {
                 return NotFound();
@@ -104,7 +107,8 @@ namespace SecandGroup_1.Controllers
             {
                 try
                 {
-                    _departmentsRepository.Update(department);
+                    _unitOfWork.Departments.Update(department);
+                    _unitOfWork.Save();
                     //_context.Update(department);
                     //await _context.SaveChangesAsync();
                 }
@@ -125,7 +129,7 @@ namespace SecandGroup_1.Controllers
                 return NotFound();
             }
             /*await _context.Department.FirstOrDefaultAsync(m => m.Id == id);*/
-            var department = _departmentsRepository.GetById(id.Value);
+            var department = _unitOfWork.Departments.GetById(id.Value);
             if (department == null)
             {
                 return NotFound();
@@ -139,10 +143,11 @@ namespace SecandGroup_1.Controllers
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> DeleteConfirmed(int id)
         {
-            var department = _departmentsRepository.GetById(id);
+            var department = _unitOfWork.Departments.GetById(id);
             if (department != null)
             {
-                _departmentsRepository.Delete(department);
+                _unitOfWork.Departments.Delete(department);
+                _unitOfWork.Save();
                 //_context.Department.Remove(department);
             }
 

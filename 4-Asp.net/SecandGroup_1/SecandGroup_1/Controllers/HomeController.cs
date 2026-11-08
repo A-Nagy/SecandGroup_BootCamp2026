@@ -1,6 +1,6 @@
 using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
-using SecandGroup_1.Models;
+
 
 namespace SecandGroup_1.Controllers
 {

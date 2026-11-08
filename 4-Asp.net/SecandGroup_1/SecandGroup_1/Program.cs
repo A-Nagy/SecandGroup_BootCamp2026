@@ -1,9 +1,13 @@
 using Microsoft.AspNetCore.Authentication.Cookies;
 using Microsoft.EntityFrameworkCore;
-using SecandGroup_1.Data;
-using SecandGroup_1.Repositories.Implementaion;
-using SecandGroup_1.Repositories.Interfaces;
-using SecandGroup_1.Security;
+using SecandGroup_1.Application.Abstractions.Repositories;
+using SecandGroup_1.Application.Abstractions.Services;
+using SecandGroup_1.Application.Security;
+using SecandGroup_1.Infrastructure.Data;
+using SecandGroup_1.Infrastructure.Repositories;
+using SecandGroup_1.Infrastructure.Services;
+
+
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -21,6 +25,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(options =>
 
 builder.Services.AddScoped(typeof(IRepository<>), typeof(Repository<>));
 builder.Services.AddScoped(typeof(IEmployeeRepository),typeof(EmployeeRepository));
+
+builder.Services.AddScoped(typeof(IUnitOfWork), typeof(UnitOfWork));
+builder.Services.AddScoped(typeof(IEmployeeService), typeof(EmployeeService));
 
 builder.Services.AddAuthentication(
     CookieAuthenticationDefaults.AuthenticationScheme).AddCookie(options=>

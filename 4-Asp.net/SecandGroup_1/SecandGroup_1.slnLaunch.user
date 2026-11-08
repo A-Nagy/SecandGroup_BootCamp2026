@@ -1,0 +1,15 @@
+[
+  {
+    "Name": "New Profile",
+    "Projects": [
+      {
+        "Path": "SecandGroup_1\\SecandGroup_1.WebDashboard.csproj",
+        "Action": "Start"
+      },
+      {
+        "Path": "SecandGroup_1.Api\\SecandGroup_1.Api.csproj",
+        "Action": "Start"
+      }
+    ]
+  }
+]
